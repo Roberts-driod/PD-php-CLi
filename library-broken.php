@@ -17,6 +17,7 @@ $books = [
 
 function addBook(&$books) {
     $title = readline("Enter title: ");
+    $author = readline("Enter author: ");
     $books[] = ['title' => $title, 'author' => $author];
 }
 
