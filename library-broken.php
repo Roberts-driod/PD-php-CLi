@@ -15,6 +15,12 @@ $books = [
     ]
 ];
 
+function showAllBooks($books){
+          foreach ($books as $id => $book) {
+            displayBook($id, $book);
+        }
+}
+
 function addBook(&$books) {
     $title = readline("Enter title: ");
     $author = readline("Enter author: ");
@@ -34,6 +40,8 @@ function displayBook($id, $book) {
 echo "\n\nWelcome to the Library\n";
 
 do {
+    $continue = true;
+    
     echo "\n\n";
     echo "1 - show all books\n";
     echo "2 - show a book\n";
@@ -44,10 +52,7 @@ do {
 
     switch ($choice) {
         case 1:
-            foreach ($books as $id => $book) {
-                displayBook($id, $book);
-            }
-
+            showAllBooks($books);
             break;
         case 2:
             $id = readline("Enter book id: ");
