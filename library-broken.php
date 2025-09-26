@@ -3,15 +3,18 @@
 $books = [
     1 => [
         'title' => 'The Great Gatsby',
-        'author' => 'F. Scott Fitzgerald'
+        'author' => 'F. Scott Fitzgerald',
+        'status' => 'available',
     ],
     2 => [
         'title' => '1984',
-        'author' => 'George Orwell'
+        'author' => 'George Orwell',
+        'status' => 'available',
     ],
     3 => [
         'title' => 'Pride and Prejudice',
-        'author' => 'Jane Austen'
+        'author' => 'Jane Austen',
+        'status' => 'available',
     ]
 ];
 
@@ -29,7 +32,8 @@ function showBook($books){
 function addBook(&$books) {
     $title = readline("Enter title: ");
     $author = readline("Enter author: ");
-    $books[] = ['title' => $title, 'author' => $author];
+    $status = "available";
+    $books[] = ['title' => $title, 'author' => $author, 'status' => $status];
 }
 
 function deleteBook(&$bookList) {
@@ -38,9 +42,17 @@ function deleteBook(&$bookList) {
 }
 
 function displayBook($id , $book) {
-    echo "ID: {$id} // Title: ". $book['title'] . " // Author: " . $book['author']. "\n\n";
+    echo "ID: {$id} // Title: ". $book['title'] . " // Author: " . $book['author']. " // Status: " . $book['status'] ."\n\n";
 }
 
+function setStatus(&$books){
+        $id = readline("Enter book ID which you want to change status: ");
+        $status = readline("Status (available/not available) --> ");
+        if($status == "available" || $status == "not available"){
+            $books[$id]["status"] = $status;
+        }
+
+}
 
 echo "\n\nWelcome to the Library\n";
 
@@ -52,7 +64,8 @@ do {
     echo "2 - show a book\n";
     echo "3 - add a book\n";
     echo "4 - delete a book\n";
-    echo "5 - quit\n\n";
+    echo "5 - quit\n";
+    echo "6 - set status\n\n";
     $choice = readline();
 
     switch ($choice) {
@@ -71,6 +84,9 @@ do {
         case 5:
             echo "Goodbye!\n";
             $continue = false;
+            break;
+        case 6:
+            setstatus($books);
             break;
         case 13:
             print_r($books); // hidden option to see full $books content
