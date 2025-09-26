@@ -32,12 +32,12 @@ function addBook(&$books) {
     $books[] = ['title' => $title, 'author' => $author];
 }
 
-function deleteBook() {
+function deleteBook(&$bookList) {
     $id = readline("Enter book ID you want to delete: ");
     unset($bookList[$id]);
 }
 
-function displayBook($id, $book) {
+function displayBook($id , $book) {
     echo "ID: {$id} // Title: ". $book['title'] . " // Author: " . $book['author']. "\n\n";
 }
 
