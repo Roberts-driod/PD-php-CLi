@@ -21,6 +21,11 @@ function showAllBooks($books){
         }
 }
 
+function showBook($books){
+            $id = readline("Enter book id: ");
+            displayBook($id, $books[$id]);
+}
+
 function addBook(&$books) {
     $title = readline("Enter title: ");
     $author = readline("Enter author: ");
@@ -41,7 +46,7 @@ echo "\n\nWelcome to the Library\n";
 
 do {
     $continue = true;
-    
+
     echo "\n\n";
     echo "1 - show all books\n";
     echo "2 - show a book\n";
@@ -55,9 +60,7 @@ do {
             showAllBooks($books);
             break;
         case 2:
-            $id = readline("Enter book id: ");
-            displayBook($id, $books[$id]);
-
+            showBook($books);
             break;
         case 3:
             addBook($books);
